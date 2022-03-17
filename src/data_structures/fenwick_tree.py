@@ -9,7 +9,6 @@ from typing import List
 
 
 class FenwickTree:
-
     def __init__(self, values: List[int] = None):
         # contains fenwick tree ranges
         tree: List[int] = []
@@ -26,7 +25,7 @@ class FenwickTree:
         self.tree = tree
 
     def lsb(self, value: int) -> int:
-        """ Return least significant bit
+        """Return least significant bit
         It just works magically, I don't know how!
         Maybe I know, for 2
         binary signed 2's complement of 2:  0000000000000010
@@ -43,7 +42,7 @@ class FenwickTree:
         return value & -value
 
     def prefixSum(self, i: int) -> int:
-        """ Computes prefix sum ftom [1,i] on based
+        """Computes prefix sum ftom [1,i] on based
         Args:
             i: Index for prefix sum from [1,i]
 
@@ -55,11 +54,13 @@ class FenwickTree:
         while i != 0:
             sum += self.tree[i]
             # i &= ~self.lsb(i) # This is equals to i -=lsb(i). This is more readable but the first one is much faster
-            i -= self.lsb(i)  # But we are using python, if you need that much optimization don't use python
+            i -= self.lsb(
+                i
+            )  # But we are using python, if you need that much optimization don't use python
         return sum
 
     def sum(self, i: int, j: int) -> int:
-        """ Sum of the intervak [i,j], one based
+        """Sum of the intervak [i,j], one based
 
         Args:
             i:
@@ -70,7 +71,7 @@ class FenwickTree:
         """
 
         if j < i:
-            raise ValueError('j cannot be smaller than i')
+            raise ValueError("j cannot be smaller than i")
 
         return self.prefixSum(j) - self.prefixSum(i - 1)
 

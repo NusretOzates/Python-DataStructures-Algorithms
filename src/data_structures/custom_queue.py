@@ -12,13 +12,14 @@ class CustomQueue(Generic[T]):
         a: CustomQueue[int] = CustomQueue()
 
     """
+
     queue: LinkedList
 
     def __init__(self):
         self.queue = LinkedList()
 
     def enqueue(self, value: T):
-        """ Append a value to the queue
+        """Append a value to the queue
 
         Args:
             value: Any value to add
@@ -29,7 +30,7 @@ class CustomQueue(Generic[T]):
         self.queue.append(value)
 
     def dequeue(self) -> T:
-        """ Remove and return the first element
+        """Remove and return the first element
 
         Returns:
             Any value added to the queue
@@ -52,7 +53,7 @@ class CustomQueue(Generic[T]):
 
     @property
     def size(self) -> int:
-        """ Size of the queue
+        """Size of the queue
 
         Returns:
             int size of the queue

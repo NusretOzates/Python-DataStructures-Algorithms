@@ -7,6 +7,7 @@ class TraversalOrder(enum.Enum):
     """
     Enum class to choose traversing type of BST
     """
+
     PRE_ORDER = 1
     IN_ORDER = 2
     POST_ORDER = 3
@@ -17,6 +18,7 @@ class Node:
     """
     A node object to store a value and node's children if any
     """
+
     value: int = None
     left: "Node" = None
     right: "Node" = None
@@ -73,7 +75,7 @@ class BinarySearchTree:
             self._levelorder(self.root)
 
     def _contains(self, node: Node, value) -> bool:
-        """ Check if a value is in the tree. This is a recursive function
+        """Check if a value is in the tree. This is a recursive function
 
         Args:
             node: Start node to check
@@ -94,7 +96,7 @@ class BinarySearchTree:
 
     @property
     def size(self) -> int:
-        """ Node count
+        """Node count
 
         Returns:
             Node count
@@ -103,7 +105,7 @@ class BinarySearchTree:
 
     @property
     def height(self) -> int:
-        """ Height of the tree
+        """Height of the tree
 
         Returns:
             Height of the tree as int
@@ -149,7 +151,7 @@ class BinarySearchTree:
                 queue.enqueue(right)
 
     def add(self, value) -> bool:
-        """ Adds a value to the tree
+        """Adds a value to the tree
         If it is a duplicate value I don't allow it. But still return True anyway
         Args:
             value: Any value.
@@ -184,7 +186,7 @@ class BinarySearchTree:
         return root
 
     def dig_left(self, node: Node) -> Node:
-        """ Go left as many as we can
+        """Go left as many as we can
 
         Args:
             node: Starting node
@@ -198,13 +200,13 @@ class BinarySearchTree:
         return self.dig_left(node.left)
 
     def dig_right(self, node: Node) -> Node:
-        """ Go right as many as we can
+        """Go right as many as we can
 
-           Args:
-               node: Starting node
+        Args:
+            node: Starting node
 
-           Returns:
-               The node in the right
+        Returns:
+            The node in the right
         """
 
         if node.right is None:
@@ -250,5 +252,4 @@ class BinarySearchTree:
 
         max_depth = max(self._height(node.left), self._height(node.right))
 
-        return  max_depth + 1
-
+        return max_depth + 1

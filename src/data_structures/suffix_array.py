@@ -1,5 +1,4 @@
 class SuffixArray:
-
     def __init__(self, value: str):
         suffixes = [value[i:] for i in range(len(value))]
         sorted_suffixes = sorted(suffixes)

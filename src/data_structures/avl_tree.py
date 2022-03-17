@@ -16,9 +16,9 @@ import random
 class Node:
     value: int
     balance_factor: int = None
-    height: int = 0 # height of this node in the tree
-    left: 'Node' = None
-    right: 'Node' = None
+    height: int = 0  # height of this node in the tree
+    left: "Node" = None
+    right: "Node" = None
 
     def __init__(self, value: int):
         self.value = value
@@ -60,7 +60,9 @@ class AVLTree:
         return self._contains(node.left, value)
 
     def insert(self, value: int):
-        if value is None:  # Friendly reminder, "if not value" won't work because if not 0 is True :)
+        if (
+            value is None
+        ):  # Friendly reminder, "if not value" won't work because if not 0 is True :)
             return False
         if value not in self:
             self.root = self._insert(self.root, value)

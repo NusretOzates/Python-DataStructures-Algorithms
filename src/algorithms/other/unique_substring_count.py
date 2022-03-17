@@ -7,4 +7,3 @@ def unique_substring_count(value: str):
     num_substr = (str_len * (str_len + 1)) // 2
     duplicate_count = sum([lcp[i] for i in range(1, str_len, 1)])
     return num_substr - duplicate_count
-

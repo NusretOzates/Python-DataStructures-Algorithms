@@ -8,6 +8,12 @@ Various data structures and algorithms in Python
 - Binary Search
 - Linear Search
 - Recursive Binary Search
+#### Graph
+
+- Breadth First Search
+- Depth First Search
+- Path find in single directed graph
+- Path find in unidirected graph
 
 ### Sort
 

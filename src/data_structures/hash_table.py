@@ -2,7 +2,6 @@ from typing import Hashable, Iterable
 
 
 class Entity:
-
     def __init__(self, key: Hashable, value):
         self.key = key
         self.value = value
@@ -19,4 +18,3 @@ class Entity:
 
 class HashTableSeperateChaining(Iterable):
     pass
-

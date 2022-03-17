@@ -6,7 +6,6 @@ from src.data_structures.suffix_array import SuffixArray
 
 
 class LCP:
-
     def __init__(self, value: str):
 
         suffix_array = SuffixArray(value)
@@ -30,4 +29,5 @@ class LCP:
     def __getitem__(self, item):
         return self.lcp[item]
 
-LCP('ababbab')
+
+LCP("ababbab")
