@@ -46,4 +46,4 @@ Various data structures and algorithms in Python
 
 - Add more test
 - Add more docstring
-- Maybe add more Generic Type hinting spport
+- Add more Generic Type hinting support, otherwise using type hinting is very hard
