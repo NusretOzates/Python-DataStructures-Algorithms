@@ -23,4 +23,4 @@ def p_of_palindrome(example: str):
     return len(odds) == 1
 
 
-print(p_of_palindrome('abba'))
+print(p_of_palindrome("abba"))

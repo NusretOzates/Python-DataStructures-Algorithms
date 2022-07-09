@@ -1,8 +1,10 @@
 from typing import List, Union
 
 
-def best_sum(target_sum: int, numbers: List[int], memory: dict) -> Union[List[int], None]:
-    """ Find the shortest sum using numbers in the array
+def best_sum(
+    target_sum: int, numbers: List[int], memory: dict
+) -> Union[List[int], None]:
+    """Find the shortest sum using numbers in the array
 
     Is it passible to generate target sum using these numbers
     You can use element of the array as many times needed
@@ -38,6 +40,3 @@ def best_sum(target_sum: int, numbers: List[int], memory: dict) -> Union[List[in
 
     memory[target_sum] = shortest_com
     return shortest_com
-
-
-

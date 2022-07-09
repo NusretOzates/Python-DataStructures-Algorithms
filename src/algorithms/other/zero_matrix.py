@@ -18,9 +18,6 @@ def zero_matrix(matrix: List[List[int]]):
                 to_zero_col.add(col_index)
                 to_zero_row.add(row_index)
 
-
-
-
     for row in to_zero_row:
         matrix[row] = [0] * col_count
     for col in to_zero_col:
@@ -30,11 +27,13 @@ def zero_matrix(matrix: List[List[int]]):
     return matrix
 
 
-import time
-
-print(zero_matrix([
-    [1, 2, 3, 4, 5],
-    [1, 2, 3, 0, 0],
-    [1, 2, 0, 4, 5],
-    [1, 2, 3, 4, 5],
-]))
+print(
+    zero_matrix(
+        [
+            [1, 2, 3, 4, 5],
+            [1, 2, 3, 0, 0],
+            [1, 2, 0, 4, 5],
+            [1, 2, 3, 4, 5],
+        ]
+    )
+)

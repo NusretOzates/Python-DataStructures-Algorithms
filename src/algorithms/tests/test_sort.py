@@ -2,7 +2,7 @@ from ..sort import merge_sort, lms, selection_sort, quick_sort
 from ...data_structures.linked_list import LinkedList
 
 
-def test_merge_sort():
+def test_merge_sort() -> None:
     result = merge_sort([])
     assert result == []
 
@@ -19,7 +19,7 @@ def test_merge_sort():
     assert result == [1, 2, 2, 3, 4]
 
 
-def test_selection_sort():
+def test_selection_sort() -> None:
     result = selection_sort([])
     assert result == []
 
@@ -36,7 +36,7 @@ def test_selection_sort():
     assert result == [1, 2, 2, 3, 4]
 
 
-def test_quick_sort():
+def test_quick_sort() -> None:
     result = quick_sort([])
     assert result == []
 
@@ -53,7 +53,7 @@ def test_quick_sort():
     assert result == [1, 2, 2, 3, 4]
 
 
-def test_linked_merge_sort():
+def test_linked_merge_sort() -> None:
     l_list = LinkedList([])
     result = lms(l_list)
     assert result.to_list() == []

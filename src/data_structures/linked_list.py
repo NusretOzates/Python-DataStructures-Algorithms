@@ -18,7 +18,10 @@ class Node:
 
 
 class LinkedList:
-    def __init__(self, values: List[int] = []):
+    def __init__(self, values=None):
+        if values is None:
+            values = []
+
         self.head: Node = None
         self.tail: Node = None
         for value in values:

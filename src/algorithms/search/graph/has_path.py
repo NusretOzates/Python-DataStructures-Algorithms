@@ -1,6 +1,8 @@
-from typing import List
+from typing import List, Dict
 from src.data_structures.custom_queue import CustomQueue
 
+# Probably a better way to do this is that using this set as a function parameter
+# otherwise testing would be a pain
 visited = set()
 
 
@@ -20,9 +22,8 @@ def has_path_dfs(graph: dict, src: str, dst: str) -> bool:
     return False
 
 
-def has_path_bfs(graph, src, dst):
-
-    queue = CustomQueue()
+def has_path_bfs(graph: Dict[str, List[str]], src: str, dst: str) -> bool:
+    queue: CustomQueue[str] = CustomQueue()
     queue.enqueue(src)
 
     while queue.size > 0:
@@ -36,6 +37,13 @@ def has_path_bfs(graph, src, dst):
     return False
 
 
-graph = {"f": ["g", "i"], "g": ["h"], "h": [], "i": ["g", "k"], "j": ["i"], "k": []}
+test_graph = {
+    "f": ["g", "i"],
+    "g": ["h"],
+    "h": [],
+    "i": ["g", "k"],
+    "j": ["i"],
+    "k": [],
+}
 
-print(has_path_bfs(graph, "f", "k"))
+print(has_path_bfs(test_graph, "f", "k"))

@@ -8,13 +8,13 @@ the original string. You can assume the string has only uppercase and lowercase 
 
 def compress(example: str) -> str:
     count = 0
-    previous = ''
+    previous = ""
     result = []
 
     for letter in example:
 
         if previous and letter != previous:
-            result.append(f'{previous}{count}')
+            result.append(f"{previous}{count}")
             count = 1
             previous = letter
             continue
@@ -22,7 +22,7 @@ def compress(example: str) -> str:
         previous = letter
         count += 1
 
-    result.append(f'{previous}{count}')
+    result.append(f"{previous}{count}")
     result = "".join(result)
 
     if len(result) >= len(example):
@@ -30,4 +30,4 @@ def compress(example: str) -> str:
     return result
 
 
-print(compress('aabcccc'))
+print(compress("aabcccc"))

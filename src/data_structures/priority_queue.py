@@ -3,12 +3,12 @@ A PQ is an abstract data type that operates similar to normal queue except that
 each element has a certain priority. This will be used to determine which elements are removed
 from the PQ. It only supports comparable data!
 """
-from typing import DefaultDict, List
+from typing import DefaultDict, List, Optional
 from collections import defaultdict
 
 
 class PriorityQueue:
-    def __init__(self, elements=None):
+    def __init__(self, elements: List[int] = None):
 
         self._heap = []
         self._map: DefaultDict[int, List[int]] = defaultdict(lambda: [])
@@ -23,50 +23,50 @@ class PriorityQueue:
             for i in reversed(range(max(0, (self._heap_size // 2) - 1))):
                 self._sink(i)
 
-    def is_empty(self):
+    def is_empty(self) -> bool:
         return self._heap_size == 0
 
-    def clear(self):
+    def clear(self) -> None:
         self._heap.clear()
         self._heap_size = 0
         self._map.clear()
 
-    def size(self):
+    def size(self) -> int:
         return self._heap_size
 
-    def peek(self):
+    def peek(self) -> Optional[int]:
         if self.is_empty():
             return None
         return self._heap[0]
 
-    def poll(self):
+    def poll(self) -> Optional[int]:
         return self._remove_at(0)
 
-    def add(self, item):
+    def add(self, item: int) -> None:
 
         if item is None:
-            return item
+            return
         self._heap.append(item)
         self._map_add(item, self._heap_size)
         self._swim(self._heap_size)
         self._heap_size += 1
 
-    def _map_add(self, item, index):
+    def _map_add(self, item: int, index: int) -> None:
 
         self._map[item].append(index)
 
-    def _map_remove(self, item, index):
+    def _map_remove(self, item: int, index: int) -> None:
 
         self._map[item].remove(index)
 
-    def _less(self, first, second):
+    def _less(self, first: int, second: int) -> bool:
 
         first = self._heap[first]
         second = self._heap[second]
 
         return first <= second
 
-    def _swim(self, k: int):
+    def _swim(self, k: int) -> None:
 
         parent_index = (k - 1) // 2
 
@@ -75,7 +75,7 @@ class PriorityQueue:
             k = parent_index
             parent_index = (k - 1) // 2
 
-    def _sink(self, k: int):
+    def _sink(self, k: int) -> None:
 
         while True:
             left_child_index = (2 * k) + 1
@@ -92,7 +92,7 @@ class PriorityQueue:
             self._swap(k, smallest)
             k = smallest
 
-    def _swap(self, first: int, second: int):
+    def _swap(self, first: int, second: int) -> None:
 
         first_value = self._heap[first]
         second_value = self._heap[second]
@@ -105,17 +105,17 @@ class PriorityQueue:
         self._map[second_value].remove(second)
         self._map[second_value].append(first)
 
-    def remove(self, item):
+    def remove(self, item: int) -> Optional[int]:
 
         if item is None:
-            return False
+            return None
 
         if item in self._map:
             return self._remove_at(self._map[item][0])
 
-        return False
+        return None
 
-    def _remove_at(self, index: int):
+    def _remove_at(self, index: int) -> Optional[int]:
 
         if self.is_empty():
             return None
@@ -140,7 +140,7 @@ class PriorityQueue:
 
         return removed_data
 
-    def is_min_heap(self, k: int):
+    def is_min_heap(self, k: int) -> bool:
 
         heap_size = self._heap_size
 

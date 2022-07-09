@@ -1,7 +1,7 @@
 from src.algorithms.dynamic_programming.best_sum import best_sum
 
 
-def test_best_sum():
+def test_best_sum() -> None:
 
     assert best_sum(7, [5, 3, 4, 7], {}) == [7]
     assert best_sum(8, [2, 3, 5], {}) == [5, 3] or best_sum(8, [2, 3, 5], {}) == [3, 5]

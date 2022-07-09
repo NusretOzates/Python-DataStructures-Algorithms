@@ -1,13 +1,14 @@
+from typing import List, Optional
+
+
 class Stack:
     """
     Stack is a linear data structure which follows a particular order in which the operations are performed.
     The order may be LIFO(Last In First Out) or FILO(First In Last Out).
     """
 
-    stack = []
-
     def __init__(self):
-        self.stack = []
+        self.stack: List[int] = []
 
     def is_empty(self) -> bool:
         """Check if the stack is empty
@@ -28,7 +29,7 @@ class Stack:
 
         return self.stack.pop()
 
-    def push(self, value):
+    def push(self, value: int) -> None:
         """Add element to the top
 
         Args:
@@ -39,7 +40,7 @@ class Stack:
         """
         self.stack.append(value)
 
-    def peek(self):
+    def peek(self) -> Optional[int]:
         """Returns the element at the top
 
         Returns:
@@ -49,14 +50,14 @@ class Stack:
             return None
         return self.stack[-1]
 
-    def __len__(self):
+    def __len__(self) -> int:
         return len(self.stack)
 
     def __iter__(self):
         for element in self.stack:
             yield element
 
-    def __repr__(self):
+    def __repr__(self) -> str:
 
         result = ""
 

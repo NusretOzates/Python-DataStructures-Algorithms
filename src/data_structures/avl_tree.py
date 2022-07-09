@@ -11,6 +11,7 @@ H(X) = Number of edges between x and the furthest leaf
 Invariant in AVL is balance factor must be either -1, 0 or 1
 """
 import random
+from typing import Union
 
 
 class Node:
@@ -29,25 +30,25 @@ class AVLTree:
     node_count = 0
 
     @property
-    def height(self):
+    def height(self) -> int:
         if self.root is None:
             return 0
         return self.root.height
 
     @property
-    def size(self):
+    def size(self) -> int:
         return self.node_count
 
-    def __len__(self):
+    def __len__(self) -> int:
         return self.node_count
 
-    def is_empty(self):
+    def is_empty(self) -> bool:
         return self.node_count == 0
 
-    def __contains__(self, item):
+    def __contains__(self, item) -> bool:
         return self._contains(self.root, item)
 
-    def _contains(self, node: Node, value: int):
+    def _contains(self, node: Node, value: int) -> bool:
         if node is None:
             return False
 
@@ -59,7 +60,7 @@ class AVLTree:
 
         return self._contains(node.left, value)
 
-    def insert(self, value: int):
+    def insert(self, value: int) -> bool:
         if (
             value is None
         ):  # Friendly reminder, "if not value" won't work because if not 0 is True :)
@@ -70,7 +71,7 @@ class AVLTree:
             return True
         return False
 
-    def _insert(self, node: Node, value: int):
+    def _insert(self, node: Node, value: int) -> Node:
 
         if node is None:
             return Node(value)
@@ -84,7 +85,7 @@ class AVLTree:
 
         return self._balance(node)
 
-    def _update(self, node: Node):
+    def _update(self, node: Node) -> None:
 
         left_node_height = node.left.height if node.left else -1
         right_node_height = node.right.height if node.right else -1
@@ -93,7 +94,7 @@ class AVLTree:
 
         node.balance_factor = right_node_height - left_node_height
 
-    def _balance(self, node: Node):
+    def _balance(self, node: Node) -> Node:
 
         # Left heavy
         if node.balance_factor == -2:
@@ -112,21 +113,21 @@ class AVLTree:
 
         return node
 
-    def _left_left_case(self, node: Node):
+    def _left_left_case(self, node: Node) -> Node:
         return self._right_rotation(node)
 
-    def _left_right_case(self, node):
+    def _left_right_case(self, node: Node) -> Node:
         node.left = self._left_rotation(node.left)
         return self._left_left_case(node)
 
-    def _right_right_case(self, node):
+    def _right_right_case(self, node: Node) -> Node:
         return self._left_rotation(node)
 
-    def _right_left_case(self, node):
+    def _right_left_case(self, node: Node) -> Node:
         node.right = self._right_rotation(node.right)
         return self._right_right_case(node)
 
-    def _left_rotation(self, node: Node):
+    def _left_rotation(self, node: Node) -> Node:
 
         parent = node.right
         node.right = parent.left
@@ -136,7 +137,7 @@ class AVLTree:
         self._update(parent)
         return parent
 
-    def _right_rotation(self, node: Node):
+    def _right_rotation(self, node: Node) -> Node:
 
         parent = node.left
         node.left = parent.right
@@ -147,25 +148,25 @@ class AVLTree:
 
     def find_min(self, node: Node) -> Node:
         if not node.left:
-            return Node
+            return node
         return self.find_min(node.left)
 
-    def find_max(self, node: Node):
+    def find_max(self, node: Node) -> Node:
         if not node.right:
-            return Node
+            return node
         return self.find_max(node.right)
 
-    def remove(self, value: int):
+    def remove(self, value: int) -> bool:
         if value in self:
             self.root = self._remove(self.root, value)
             self.node_count -= 1
             return True
         return False
 
-    def _remove(self, node: Node, value: int):
+    def _remove(self, node: Node, value: int) -> Union[Node, None]:
 
         if node is None:
-            return Node
+            return None
 
         if value < node.value:
             node.left = self._remove(node.left, value)
@@ -174,7 +175,7 @@ class AVLTree:
             node.right = self._remove(node.right, value)
 
         else:
-            # We fond the node
+            # We found the node
             right = node.right
             left = node.left
             # there is right node or no subtree

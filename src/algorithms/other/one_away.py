@@ -34,8 +34,8 @@ def is_one_away(first: str, second: str) -> bool:
     return False
 
 
-print(is_one_away('pale', 'ple'))
-print(is_one_away('pales', 'pale'))
-print(is_one_away('pale', 'bale'))
-print(is_one_away('pale', 'bake'))
-print(is_one_away('pale', 'baksaasasae'))
+print(is_one_away("pale", "ple"))
+print(is_one_away("pales", "pale"))
+print(is_one_away("pale", "bale"))
+print(is_one_away("pale", "bake"))
+print(is_one_away("pale", "baksaasasae"))

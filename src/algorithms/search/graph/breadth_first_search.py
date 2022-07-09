@@ -1,8 +1,8 @@
 from src.data_structures.custom_queue import CustomQueue
 
 
-def breadth_first_search(graph: dict, start: str):
-    queue = CustomQueue()
+def breadth_first_search(graph: dict, start: str) -> None:
+    queue: CustomQueue[str] = CustomQueue()
     queue.enqueue(start)
 
     while queue.size > 0:
@@ -13,13 +13,13 @@ def breadth_first_search(graph: dict, start: str):
             queue.enqueue(neighbour)
 
 
-def breadth_first_recursive_search(graph: dict, start: str):
+def breadth_first_recursive_search(graph: dict, start: str) -> None:
     print(start)
     for neighbour in graph[start]:
         breadth_first_recursive_search(graph, neighbour)
 
 
-graph = {
+graph_test = {
     "a": ["c", "b"],
     "b": ["d"],
     "c": ["e"],
@@ -28,4 +28,4 @@ graph = {
     "f": [],
 }
 
-breadth_first_search(graph, "a")
+breadth_first_search(graph_test, "a")

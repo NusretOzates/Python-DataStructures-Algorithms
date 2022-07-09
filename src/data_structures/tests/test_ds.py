@@ -4,7 +4,7 @@ from ..binary_search_tree import BinarySearchTree, TraversalOrder
 linked_list = LinkedList()
 
 
-def test_linked_list():
+def test_linked_list() -> None:
     linked_list.add(5)
     assert linked_list.size() == 1
 
@@ -22,7 +22,7 @@ def test_linked_list():
     assert linked_list.head.value == 2
 
 
-def test_bst():
+def test_bst() -> None:
     bst = BinarySearchTree()
     bst.add(5)
     bst.add(7)

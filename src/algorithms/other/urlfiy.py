@@ -6,17 +6,18 @@ EXAMPLE
 Input: "Mr John Smith ", 13 Output: "Mr%20John%20Smith"
 """
 
+
 def urlify(example: str, length: int) -> str:
 
     chars = []
 
-    for i in range(length+1):
-        if example[i] == ' ':
-            chars.append('%20')
+    for i in range(length + 1):
+        if example[i] == " ":
+            chars.append("%20")
             continue
         chars.append(example[i])
 
     return "".join(chars)
 
 
-print(urlify('Mr John Smith    ', 13))
+print(urlify("Mr John Smith    ", 13))

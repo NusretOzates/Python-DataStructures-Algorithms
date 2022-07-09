@@ -11,17 +11,18 @@ dependencies: (a, d), (f, b), (b, d), (f, a), (d, c) Output:f, e, a, b, d, c
 import collections
 from typing import List, Tuple, Dict
 
+
 class Node:
-
-
-
     def __init__(self, value):
         self.value = value
-        self.edges: List['Node'] = []
-        self.dependencies: List['Node'] = []
+        self.edges: List["Node"] = []
+        self.dependencies: List["Node"] = []
 
-def create_graph(projects: List[str], dependencies: List[Tuple[str, str]]) -> Dict[str, Node]:
-    graph: Dict[str,Node] = {project: Node(project) for project in projects}
+
+def create_graph(
+    projects: List[str], dependencies: List[Tuple[str, str]]
+) -> Dict[str, Node]:
+    graph: Dict[str, Node] = {project: Node(project) for project in projects}
     for dependency, project in dependencies:
         graph[dependency].edges.append(graph[project])
         graph[project].dependencies.append(graph[dependency])
@@ -35,9 +36,10 @@ def get_wo_dependencies(graph: Dict[str, Node]):
 
     for key, node in graph.items():
         if not node.dependencies:
-            nodes.append((key,node))
+            nodes.append((key, node))
 
     return nodes
+
 
 def build_order(projects: List[str], dependencies: List[Tuple[str, str]]) -> List[str]:
     # Create a graph
@@ -47,7 +49,7 @@ def build_order(projects: List[str], dependencies: List[Tuple[str, str]]) -> Lis
     while len(graph) > 0:
         nodes = get_wo_dependencies(graph)
         if not nodes:
-            raise AssertionError('Not possible to build')
+            raise AssertionError("Not possible to build")
         # Add them to build list
         for key, node in nodes:
             build_list.append(key)
@@ -59,5 +61,18 @@ def build_order(projects: List[str], dependencies: List[Tuple[str, str]]) -> Lis
 
     return build_list
 
-print(build_order(['a', 'b', 'c', 'd', 'e', 'f'],
-            [('a', 'd'), ('f', 'b'), ('b', 'd'), ('f', 'a'), ('d', 'c'),('e', 'f'),('d', 'e')]))
+
+print(
+    build_order(
+        ["a", "b", "c", "d", "e", "f"],
+        [
+            ("a", "d"),
+            ("f", "b"),
+            ("b", "d"),
+            ("f", "a"),
+            ("d", "c"),
+            ("e", "f"),
+            ("d", "e"),
+        ],
+    )
+)

@@ -1,5 +1,8 @@
+from typing import List
+
+
 class UnionFind:
-    def __init__(self, size):
+    def __init__(self, size: int):
 
         # number of elements in this union find
         self.element_size = size
@@ -10,7 +13,7 @@ class UnionFind:
         # number of components
         self.n_components = size
 
-    def find(self, p: int):
+    def find(self, p: int) -> int:
 
         root = p
         while self.id[root] != root:
@@ -24,22 +27,22 @@ class UnionFind:
 
         return root
 
-    def is_connected(self, p: int, q: int):
+    def is_connected(self, p: int, q: int) -> bool:
 
         return self.find(p) == self.find(q)
 
-    def component_size(self, p: int):
+    def component_size(self, p: int) -> int:
 
         root = self.find(p)
-        return self._component_size(root)
+        return self._component_size[root]
 
-    def size(self):
+    def size(self) -> int:
         return self.element_size
 
-    def components(self):
+    def components(self) -> int:
         return self.n_components
 
-    def unify(self, p: int, q: int):
+    def unify(self, p: int, q: int) -> None:
 
         root_p = self.find(p)
         root_q = self.find(q)

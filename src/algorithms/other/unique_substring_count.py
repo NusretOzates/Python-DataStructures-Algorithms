@@ -1,7 +1,7 @@
 from src.data_structures.lcp_array import LCP
 
 
-def unique_substring_count(value: str):
+def unique_substring_count(value: str) -> int:
     str_len = len(value)
     lcp = LCP(value)
     num_substr = (str_len * (str_len + 1)) // 2

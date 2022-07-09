@@ -1,7 +1,7 @@
 from src.data_structures.stack import Stack
 
 
-def depthFirstSearch(graph: dict, start: str):
+def depth_first_search(graph: dict, start: str):
     stack = Stack()
     stack.push(start)
 
@@ -13,13 +13,13 @@ def depthFirstSearch(graph: dict, start: str):
             stack.push(neighbour)
 
 
-def depthFirstRecursiveSearch(graph: dict, start: str):
+def depth_first_recursive_search(graph: dict, start: str) -> None:
     print(start)
     for neighbour in graph[start]:
-        depthFirstRecursiveSearch(graph, neighbour)
+        depth_first_recursive_search(graph, neighbour)
 
 
-graph = {
+test_graph = {
     "a": ["b", "c"],
     "b": ["d"],
     "c": ["e"],
@@ -28,4 +28,4 @@ graph = {
     "f": [],
 }
 
-depthFirstRecursiveSearch(graph, "a")
+depth_first_recursive_search(test_graph, "a")
