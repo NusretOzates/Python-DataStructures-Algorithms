@@ -1,0 +1,27 @@
+[tool.mypy]
+warn_return_any = false
+warn_unreachable = true
+warn_redundant_casts = true
+disallow_any_explicit = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+no_implicit_optional = true
+allow_redefinition = false
+show_error_context = true
+show_column_numbers = true
+pretty = true
+color_output = true
+raise_exceptions = true
+ignore_missing_imports = true
+
+
+[tool.pylint.design]
+min-public-methods = 2
+
+[tool.pylint.logging]
+logging-format-style = "new"
+logging-modules = ["*"] # Change this with your logger name(s)
+
+
+[tool.pylint.similarities]
+ignore-docstrings = true
