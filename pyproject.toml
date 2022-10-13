@@ -24,4 +24,4 @@ logging-modules = ["*"] # Change this with your logger name(s)
 
 
 [tool.pylint.similarities]
-ignore-docstrings = true
+ignore-docstrings = true 
