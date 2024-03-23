@@ -46,11 +46,15 @@ class LinkedList:
         Returns:
             True if successful otherwise False
         """
-        if index >= self.size() or value is None:
+        if index > self.size or value is None:
             return False
         if index == 0:
             self.add(value)
             return True
+        if index == self.size:
+            self.append(value)
+            return True
+
         node = Node(value)
 
         current_node = self.head
@@ -65,7 +69,7 @@ class LinkedList:
         node.next_node = next_node
         return True
 
-    def remove(self, index: int) -> bool:
+    def remove_at(self, index: int) -> bool:
         """Removes the node at index position
         Removal takes O(1) time but finding the node at the insertion point takes O(n) time.
         Takes overall O(n) time.
@@ -75,7 +79,7 @@ class LinkedList:
         Returns:
             True if successful otherwise False
         """
-        if index >= self.size():
+        if index >= self.size:
             return False
         if index == 0:
             self.head = self.head.next_node
@@ -220,7 +224,7 @@ class LinkedList:
 
         """
 
-        if index > self.size():
+        if index > self.size:
             return None
 
         if index == 0:
@@ -234,7 +238,7 @@ class LinkedList:
             position += 1
 
         return current
-
+    @property
     def size(self) -> int:
         """Number of nodes in the list
         Takes O(n) time

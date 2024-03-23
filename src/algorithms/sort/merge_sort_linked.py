@@ -16,13 +16,13 @@ def merge(left: LinkedList, right: LinkedList) -> LinkedList:
     while left.head and right.head:
         if left.head.value < right.head.value:
             merged_list.append(left.head.value)
-            left.remove(0)
+            left.remove_at(0)
             continue
 
         merged_list.append(right.head.value)
-        right.remove(0)
+        right.remove_at(0)
 
-    last_position = merged_list.size() - 1
+    last_position = merged_list.size - 1
 
     # If any number left on the left size, add them all
     if left.head:
@@ -49,7 +49,7 @@ def merge_sort(values: LinkedList) -> LinkedList:
      A new sorted list
     """
 
-    if values.size() <= 1:
+    if values.size <= 1:
         return values
 
     left_half, right_half = split(values)
@@ -75,7 +75,7 @@ def split(linked_list: LinkedList):
         right_half = None
         return left_half, right_half
 
-    mid_point = (linked_list.size() - 1) // 2
+    mid_point = (linked_list.size - 1) // 2
 
     middle_node = linked_list.valueof(mid_point)
 

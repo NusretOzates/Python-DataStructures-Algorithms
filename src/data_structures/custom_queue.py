@@ -38,7 +38,7 @@ class CustomQueue(Generic[T]):
         if self.queue.is_empty():
             return
         result = self.queue.head.value
-        self.queue.remove(0)
+        self.queue.remove_at(0)
         return result
 
     def peek(self) -> T:
@@ -58,7 +58,7 @@ class CustomQueue(Generic[T]):
         Returns:
             int size of the queue
         """
-        return self.queue.size()
+        return self.queue.size
 
     def __repr__(self):
         elements = self.queue.to_list()
