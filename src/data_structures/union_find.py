@@ -36,9 +36,11 @@ class UnionFind:
         root = self.find(p)
         return self._component_size[root]
 
+    @property
     def size(self) -> int:
         return self.element_size
 
+    @property
     def components(self) -> int:
         return self.n_components
 
