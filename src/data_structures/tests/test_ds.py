@@ -1,12 +1,15 @@
 from ..linked_list import LinkedList
 from ..binary_search_tree import BinarySearchTree, TraversalOrder
 
-linked_list = LinkedList()
+
 
 
 def test_linked_list() -> None:
+
+    linked_list = LinkedList()
+
     linked_list.add(5)
-    assert linked_list.size() == 1
+    assert linked_list.size == 1
 
     linked_list.add(2)
     assert linked_list.head.value == 2
@@ -15,11 +18,17 @@ def test_linked_list() -> None:
     assert linked_list.indexof(6) == 0
     assert linked_list.indexof(2) == 1
 
-    linked_list.remove(0)
+    linked_list.remove_at(0)
     assert linked_list.head.value == 2
 
     linked_list.remove_value(5)
     assert linked_list.head.value == 2
+
+    result = linked_list.insert(2, 14)
+    assert result is False
+
+    result = linked_list.insert(1, 14)
+    assert result is True
 
 
 def test_bst() -> None:
